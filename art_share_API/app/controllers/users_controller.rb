@@ -23,13 +23,17 @@ class UsersController < ApplicationController
 
 
     def update
-        @user = User.update(params[:id], user_params)
-        render json: @user
+        @id = params[:id]
+        if User.update(@id, user_params)
+            render json: User.find(@id)
+        else
+            render json: User.find(@id).errors.full_messages, status: :unprocessable_entity
+        end
     end
 
 
     def destroy
-        User.delete(params[:id])
+        User.destroy(params[:id])
         redirect_to users_url
     end
 
