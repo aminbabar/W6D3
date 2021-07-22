@@ -1,18 +1,22 @@
 class ArtworksController < ApplicationController
 
     def index
-        user = User.find_by(id: params[:user_id])
-        artworks = user.artworks
-        artwork_shares  = user.shared_artworks
+        # user = User.find_by(id: params[:user_id])
+        # artworks = user.artworks
+        # artwork_shares  = user.shared_artworks
+
         # artwork_shared = User.select("artworks.*").joins(:shared_artworks).where(viewer_id: params[:user_id])
         # art = User.joins(:)
         # artworks_shared = ArtworkShare.find_by(viewer_id: params[:user_id])
 
         # debugger
-        render json: (artwork_shares.to_a + artworks.to_a) #.merge(artwork_shared))
+        # render json: (artwork_shares.to_a + artworks.to_a) #.merge(artwork_shared))
         # artwo
         # @artworks = Artwork.all
         # render json: @artworks 
+
+        artworks = Artwork.owned_viewed(params[:user_id])
+        render json: artworks
     end
 
     def show 
