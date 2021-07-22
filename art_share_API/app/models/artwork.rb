@@ -9,7 +9,7 @@ class Artwork < ApplicationRecord
 
     has_many :artwork_shares,
         primary_key: :id,
-        foreign_key: :viewer_id,
+        foreign_key: :artwork_id,
         class_name: :ArtworkShare,
         dependent: :destroy
 
@@ -19,8 +19,8 @@ class Artwork < ApplicationRecord
         source: :viewer
 
     def self.owned_viewed(user_id)
+        # debugger
         Artwork
-            .select("artworks.*")
             .left_outer_joins(:artwork_shares)
             .where("artworks.artist_id = ? OR artwork_shares.viewer_id = ?", user_id, user_id)
     end
