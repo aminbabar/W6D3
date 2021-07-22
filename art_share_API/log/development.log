@@ -2330,3 +2330,425 @@ Completed 500 Internal Server Error in 53180ms (ActiveRecord: 14.7ms)
 NoMethodError (undefined method `+' for #<Artwork:0x00007fd6bb8b40e0>):
   
 app/controllers/artworks_controller.rb:7:in `index'
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (41.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "First_Routes_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (29.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "First_Routes_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (128.9ms)[0m  [1m[35mCREATE DATABASE "First_Routes_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (69.1ms)[0m  [1m[35mCREATE DATABASE "First_Routes_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (25.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2373741354582284820)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210721183522)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210721183522_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210721183522"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to ChangeUsers (20210721201336)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (8.4ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "name"[0m
+  ↳ db/migrate/20210721201336_change_users.rb:3
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "email"[0m
+  ↳ db/migrate/20210721201336_change_users.rb:4
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying NOT NULL[0m
+  ↳ db/migrate/20210721201336_change_users.rb:5
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/migrate/20210721201336_change_users.rb:7
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210721201336"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateArtworks (20210721202929)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" bigserial primary key, "title" character varying NOT NULL, "image_url" character varying NOT NULL, "artist_id" integer NOT NULL)[0m
+  ↳ db/migrate/20210721202929_create_artworks.rb:3
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_artworks_on_artist_id_and_title" ON "artworks"  ("artist_id", "title")[0m
+  ↳ db/migrate/20210721202929_create_artworks.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210721202929"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateArtworkShares (20210721204232)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "artwork_shares" ("id" bigserial primary key, "artwork_id" integer NOT NULL, "viewer_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210721204232_create_artwork_shares.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_artwork_shares_on_artwork_id_and_viewer_id" ON "artwork_shares"  ("artwork_id", "viewer_id")[0m
+  ↳ db/migrate/20210721204232_create_artwork_shares.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_artwork_shares_on_artwork_id" ON "artwork_shares"  ("artwork_id")[0m
+  ↳ db/migrate/20210721204232_create_artwork_shares.rb:10
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_artwork_shares_on_viewer_id" ON "artwork_shares"  ("viewer_id")[0m
+  ↳ db/migrate/20210721204232_create_artwork_shares.rb:11
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_artworks_on_artist_id" ON "artworks"  ("artist_id")[0m
+  ↳ db/migrate/20210721204232_create_artwork_shares.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210721204232"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-07-22 18:03:27.544488"], ["updated_at", "2021-07-22 18:03:27.544488"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2373741354582284820)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Exists (5.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "davinci"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2021-07-22 18:03:40.093638"], ["updated_at", "2021-07-22 18:03:40.093638"], ["username", "davinci"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "quinn"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2021-07-22 18:03:40.097215"], ["updated_at", "2021-07-22 18:03:40.097215"], ["username", "quinn"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "amin"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2021-07-22 18:03:40.099134"], ["updated_at", "2021-07-22 18:03:40.099134"], ["username", "amin"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "tahj"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2021-07-22 18:03:40.101220"], ["updated_at", "2021-07-22 18:03:40.101220"], ["username", "tahj"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "greta"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "username") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2021-07-22 18:03:40.103269"], ["updated_at", "2021-07-22 18:03:40.103269"], ["username", "greta"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mArtwork Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "monalisa"], ["artist_id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mArtwork Create (1.3ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "image_url", "artist_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "monalisa"], ["image_url", "monalisa.com"], ["artist_id", 1]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mArtwork Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "last supper"], ["artist_id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mArtwork Create (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "image_url", "artist_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "last supper"], ["image_url", "lastsupper.com"], ["artist_id", 1]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mArtwork Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "landscape"], ["artist_id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mArtwork Create (0.4ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "image_url", "artist_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "landscape"], ["image_url", "landscape.com"], ["artist_id", 5]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:21
+  [1m[36mArtworkShare Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artwork_id" = $2 LIMIT $3[0m  [["viewer_id", 5], ["artwork_id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mArtworkShare Create (0.4ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 1], ["viewer_id", 5], ["created_at", "2021-07-22 18:03:40.154553"], ["updated_at", "2021-07-22 18:03:40.154553"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArtworkShare Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artwork_id" = $2 LIMIT $3[0m  [["viewer_id", 5], ["artwork_id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mArtworkShare Create (0.2ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 2], ["viewer_id", 5], ["created_at", "2021-07-22 18:03:40.157014"], ["updated_at", "2021-07-22 18:03:40.157014"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:07:02 -0400
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/aminbabar/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mArtwork Load (1.0ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtworkShare Load (1.0ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 LIMIT $2[0m  [["viewer_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:5
+Completed 500 Internal Server Error in 2225ms (ActiveRecord: 27.8ms)
+
+
+  
+NoMethodError (undefined method `merge' for #<Artwork:0x00007fe1b63fb2a0>):
+  
+app/controllers/artworks_controller.rb:7:in `index'
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:08:53 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtworkShare Load (0.6ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 LIMIT $2[0m  [["viewer_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:5
+Completed 500 Internal Server Error in 2174ms (ActiveRecord: 27.0ms)
+
+
+  
+NoMethodError (undefined method `or' for #<Artwork:0x00007fe1c6ab07e8>):
+  
+app/controllers/artworks_controller.rb:7:in `index'
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:14:35 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mArtwork Load (1.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+Completed 500 Internal Server Error in 4623ms (ActiveRecord: 25.4ms)
+
+
+  
+NameError (undefined local variable or method `artworks_shared' for #<ArtworksController:0x00007fe1c6fde648>
+Did you mean?  artwork_shared
+               artworks_owned):
+  
+app/controllers/artworks_controller.rb:9:in `index'
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:14:57 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+Completed 500 Internal Server Error in 1948ms (ActiveRecord: 26.1ms)
+
+
+  
+NoMethodError (undefined method `merge' for #<Artwork:0x00007fe1c6f77448>):
+  
+app/controllers/artworks_controller.rb:9:in `index'
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:15:02 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mUser Load (6.2ms)[0m  [1m[34mSELECT  artworks.* FROM "users" INNER JOIN "artwork_shares" ON "artwork_shares"."viewer_id" = "users"."id" INNER JOIN "artworks" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "users"."viewer_id" = $1 LIMIT $2[0m  [["viewer_id", "5"], ["LIMIT", 11]]
+  ↳ app/controllers/artworks_controller.rb:9
+Completed 500 Internal Server Error in 315381ms (ActiveRecord: 6.8ms)
+
+
+  
+NoMethodError (undefined method `merge' for #<Artwork:0x00007fe1b70287a8>):
+  
+app/controllers/artworks_controller.rb:9:in `index'
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:20:20 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+Completed 200 OK in 32ms (Views: 0.4ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/users/2/artworks" for ::1 at 2021-07-22 14:20:26 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"2"}
+  [1m[36mArtwork Load (1.5ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/3/artworks" for ::1 at 2021-07-22 14:20:28 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"3"}
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/4/artworks" for ::1 at 2021-07-22 14:20:30 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"4"}
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/artworks" for ::1 at 2021-07-22 14:20:31 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"1"}
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/artworks" for ::1 at 2021-07-22 14:23:32 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"1"}
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artworks_controller.rb:11
+Completed 200 OK in 58ms (Views: 6.9ms | ActiveRecord: 32.3ms)
+
+
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:23:53 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 5]]
+  ↳ app/controllers/artworks_controller.rb:11
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/3/artworks" for ::1 at 2021-07-22 14:23:57 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 3]]
+  ↳ app/controllers/artworks_controller.rb:11
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/1/artworks" for ::1 at 2021-07-22 14:24:00 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artworks_controller.rb:11
+Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/1/artworks" for ::1 at 2021-07-22 14:26:22 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (2.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artworks"."artist_id" = $1 AND "artwork_shares"."viewer_id" = $2[0m  [["artist_id", 1], ["viewer_id", 1]]
+  ↳ app/controllers/artworks_controller.rb:12
+Completed 200 OK in 44ms (Views: 1.1ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:26:31 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (1.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artworks"."artist_id" = $1 AND "artwork_shares"."viewer_id" = $2[0m  [["artist_id", 5], ["viewer_id", 5]]
+  ↳ app/controllers/artworks_controller.rb:12
+Completed 200 OK in 6ms (Views: 1.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:26:47 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 5], ["LIMIT", 11]]
+  ↳ app/controllers/artworks_controller.rb:12
+  [1m[36mArtwork Load (1.0ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."viewer_id" = $1 LIMIT $2[0m  [["viewer_id", 5], ["LIMIT", 11]]
+  ↳ app/controllers/artworks_controller.rb:12
+  [1m[36mArtwork Load (2.9ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artworks"."artist_id" = $1 AND "artwork_shares"."viewer_id" = $2 LIMIT $3[0m  [["artist_id", 5], ["viewer_id", 5], ["LIMIT", 11]]
+  ↳ app/controllers/artworks_controller.rb:12
+  [1m[36mCACHE Artwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 5], ["LIMIT", 11]]
+  ↳ app/controllers/artworks_controller.rb:12
+  [1m[36mArtwork Load (1.9ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artworks"."artist_id" = $1 AND "artwork_shares"."viewer_id" = $2[0m  [["artist_id", 5], ["viewer_id", 5]]
+  ↳ app/controllers/artworks_controller.rb:12
+Completed 200 OK in 185552ms (Views: 3.1ms | ActiveRecord: 40.0ms)
+
+
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:30:01 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (2.7ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 5]]
+  ↳ app/controllers/artworks_controller.rb:12
+Completed 200 OK in 3281ms (Views: 20.7ms | ActiveRecord: 63.7ms)
+
+
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:30:39 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (14.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."viewer_id" = $1 LIMIT $2[0m  [["viewer_id", 5], ["LIMIT", 11]]
+  ↳ app/controllers/artworks_controller.rb:12
+  [1m[36mArtwork Load (8.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 5]]
+  ↳ (byebug):1
+Completed 200 OK in 46142ms (Views: 0.5ms | ActiveRecord: 23.1ms)
+
+
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:31:29 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 5]]
+  ↳ app/controllers/artworks_controller.rb:12
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 5]]
+  ↳ app/controllers/artworks_controller.rb:12
+Completed 200 OK in 48ms (Views: 0.3ms | ActiveRecord: 28.3ms)
+
+
+Started GET "/users/5/artworks" for ::1 at 2021-07-22 14:31:53 -0400
+Processing by ArtworksController#index as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"3", "viewer_id"=>"3"}, "user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:4
+  [1m[36mArtwork Load (1.1ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 5]]
+  ↳ app/controllers/artworks_controller.rb:12
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 5]]
+  ↳ app/controllers/artworks_controller.rb:12
+Completed 200 OK in 50ms (Views: 0.3ms | ActiveRecord: 30.0ms)
+
+
