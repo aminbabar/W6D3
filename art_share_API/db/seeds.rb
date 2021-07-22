@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ArtworkShare.destroy_all
+Comment.destroy_all
 Artwork.destroy_all
 User.destroy_all
-
 
 davinci = User.create(username: "davinci")
 quinn = User.create(username: "quinn")
@@ -27,3 +27,7 @@ ArtworkShare.create(artwork_id: monalisa.id, viewer_id: greta.id)
 ArtworkShare.create(artwork_id: last_supper.id, viewer_id: greta.id)
 
 
+Comment.create(user_id: amin.id, artwork_id: landscape.id, body: "Wow so cool!")
+Comment.create(user_id: quinn.id, artwork_id: landscape.id, body: "Very Nice!")
+Comment.create(user_id: quinn.id, artwork_id: monalisa.id, body: "Ive seen better!") 
+Comment.create(user_id: greta.id, artwork_id: last_supper.id, body: "Mine is better!")

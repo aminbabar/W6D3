@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :destroy, :index, :show, :update] do
     resources :artworks, only: [:index]
-    resources :users, only: [:index]
+    resources :comments, only: [:index]
   end
 
   resources :artworks, only: [:create, :destroy, :show, :update] do
