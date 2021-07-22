@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :artwork_shares, only: [:create, :destroy]
 
+  resources :comments, only: [:create, :destroy, :index]
+
   # resources :users do
   #   resources :artworks, only: [:index]
   # end
