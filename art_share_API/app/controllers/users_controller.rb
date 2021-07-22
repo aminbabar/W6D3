@@ -23,11 +23,12 @@ class UsersController < ApplicationController
 
 
     def update
-        @id = params[:id]
-        if User.update(@id, user_params)
-            render json: User.find(@id)
+        # @id = params[:id]
+        @user = User.find(params[:id])
+        if @user.update(user_params)
+            render json: @user
         else
-            render json: User.find(@id).errors.full_messages, status: :unprocessable_entity
+            render json: @user.errors.full_messages, status: :unprocessable_entity
         end
     end
 
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :name)
+        params.require(:user).permit(:username)
     end
 
 
