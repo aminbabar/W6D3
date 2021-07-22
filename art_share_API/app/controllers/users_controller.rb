@@ -34,6 +34,7 @@ class UsersController < ApplicationController
 
 
     def destroy
+        debugger
         User.destroy(params[:id])
         redirect_to users_url
     end

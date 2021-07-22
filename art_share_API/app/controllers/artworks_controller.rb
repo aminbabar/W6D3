@@ -1,8 +1,10 @@
 class ArtworksController < ApplicationController
 
     def index
-        @artworks = Artwork.all
-        render json: @artworks 
+        artworks_owned = Artwork.find_by(artist_id: params[:id])
+        # artwo
+        # @artworks = Artwork.all
+        # render json: @artworks 
     end
 
     def show 
@@ -31,7 +33,7 @@ class ArtworksController < ApplicationController
         # debugger
         @artwork = Artwork.new(artwork_params)
 
-        if @artwork.save!
+        if @artwork.save
             render json: @artwork
         else
             render json: @artwork.errors.full_messages, status: 422
